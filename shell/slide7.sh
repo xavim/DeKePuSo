@@ -7,7 +7,7 @@
 function msg-and-wait()   # $1 = msg
 {
    echo
-   read -t 10 -p "$1" ANS
+   read -t 60 -p "$1" ANS
    echo
 }
 
@@ -33,7 +33,7 @@ msg-and-wait "prem <enter> per continuar..."
 comanda echo *
 msg-and-wait "prem <enter> per continuar..."
 
-comanda echo '$USER'
+comanda echo \''$USER'\'
 msg-and-wait "prem <enter> per continuar..."
 
 comanda echo $USER
@@ -61,13 +61,16 @@ comanda echo prova{2,4,6}.c
 msg-and-wait "prem <enter> per continuar..."
 
 comanda echo prova{0,1,2,3,4,5,6,7,8,9}.c '>out.txt' >out.txt
+echo "Contingut del fitxer out.txt:"
 cat out.txt
 msg-and-wait "prem <enter> per continuar..."
 
 comanda ls prova{0,1,2,3,4,5,6,7,8,9}.c '>out.txt' >out.txt
+echo "Contingut del fitxer out.txt:"
 cat out.txt
 msg-and-wait "prem <enter> per continuar..."
 
 comanda ls prova{0,1,2,3,4,5,6,7,8,9}.c '>&out_err.txt' >&out_err.txt
+echo "Contingut del fitxer out_err.txt:"
 cat out_err.txt
 msg-and-wait "prem <enter> per acabar."
