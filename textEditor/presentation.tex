@@ -1,0 +1,267 @@
+\documentclass{beamer}
+
+\usetheme{AnnArbor}
+
+\title{Ser eficient amb l'editor de text}
+\subtitle{(o per què uso l'editor vi)}
+
+\author{Juanjo Costa}
+\institute{jcosta@ac.upc.edu}
+\date[29/11/23]{Barcelona, 29 Novembre 2023}
+
+\begin{document}
+
+
+% Title page frame
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Outline frame
+\begin{frame}{Index}
+    \tableofcontents
+\end{frame}
+
+% Show outline at each section : Current section
+\AtBeginSection[ ]
+{
+\begin{frame}{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+% Presentation structure
+%\section{Per què dedicar temps a l'editor? Exemple d'us}
+%\section{Vi: un editor 'diferent'}
+%\section{Basics}
+%    \subsection{Com em moc?}
+%    \subsection{Com afegeixo text?}
+%    \subsection{Com modifico el text?}
+%    \subsection{Com busco text?}
+%    \subsection{Com copio text?}
+%\section{Advanced}
+%    \subsection{Gestió de finestres}
+%    \subsection{Gestió de buffers}
+%    \subsection{Ajudes a la programant}
+%    \subsection{No et repeteixis}
+%\section{Conclusió}
+%\section{Com puc saber-ne més?}
+
+
+\section{Per què dedicar temps a l'editor? Exemple d'us}
+\begin{frame}{Exemple d'ús}
+\end{frame}
+\section{Vi: un editor 'diferent'}
+    \begin{frame}{Vi: un editor 'diferent'}
+        \begin{itemize}
+            \item Editor modal
+                \begin{description}
+                    \item [Inserció] Mode en el que \textbf{NOMÉS} podem escriure text
+                    \item [Comandes] Mode en el que ens podem moure i executar
+                        comandes (per defecte)
+                \end{description}
+                \begin{alertblock}{Diferència vs editor habitual}
+                    Normalment els editors s'executen en mode
+                    "Inserció"... però el que fem habitualment és ...
+                    \textbf{VI}sualitzar  :) i esporàdicament fer algun canvi.
+                \end{alertblock}
+        \end{itemize}
+    \end{frame}
+
+\section{Basics}
+    \subsection{Com em moc?}
+    \begin{frame}{Com em moc?}
+        \begin{itemize}
+            \item Moviment
+                \begin{itemize}
+                    \item Caràcter \alert{h j k l}
+                    \item Paraules inici final \alert{w b e}
+                    \item Línia  inici final \alert{0 \$}
+                    \item Altres \alert{ctrl-u ctrl-d }
+                    \item Inici final fitxer \alert{gg G}
+                    \item On soc? \alert{ctrl-g}
+                \end{itemize}
+            \item Sortir de vim
+                \alert{:q! ZZ}
+            \item Ajuda {:help}
+            \begin{alertblock}{Useful options}
+                \begin{itemize}
+                    \item Ruler (\alert{:set ruler})
+                \end{itemize}
+            \end{alertblock}
+            \onslide<1->
+            \begin{block}{El moviment és el més important}
+                Moure'ns eficientment pel fitxer! Només superat per la cerca :)
+            \end{block}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Com afegeixo text?}
+    \begin{frame}{Com afegeixo text?}
+        \begin{itemize}
+            \item Entrar en mode insercio \alert{i I a A o O}
+            \item Sortir del mode insercio \alert{Esc Ctrl-3}
+        \end{itemize}
+    \end{frame}
+    \subsection{Com modifico el text?}
+    \begin{frame}{Com modifico el text?}
+        \begin{itemize}
+            \item Borrar
+                \alert{"composició de comandes"}
+                \begin{itemize}
+                    \item Caràcter  \alert{x}
+                    \item Paraula   \alert{dw d3w}
+                    \item Línia   \alert{dd}
+                    \item Fins a final de linia \alert{d\$}
+                \end{itemize}
+            \item Replace caràcter \alert{r} o fins que em cansi \alert{R}
+            \item Change \alert{cw c3w}
+            \item Join lines \alert{J}
+            \item M'he equivocat \alert{u} ... no, no, no m'havia equivocat \alert{ctrl-R}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Com busco text?}
+    \begin{frame}{Com busco text?}
+        \begin{itemize}
+            \item Cerca caràcter \alert{f caràcter} i next \alert{;}
+                \begin{itemize}
+                    \item Cercar caràcter (posició anterior) \alert{t caràcter}
+                    \item Utilitzar majuscules canvia direcció cerca \alert{F T}
+                \end{itemize}
+            \item Cerca paraula \alert{/}
+                \begin{itemize}
+                    \item Next \alert{n} and previous \alert{N}
+                \end{itemize}
+            \item Cerca paraula actual \alert{*}
+            \item Match parenthesis \alert{\%}
+            \item Substitució \alert{:s/pattern/subst/} i repetir ultima substitució \alert{\&}
+            \begin{alertblock}{Useful options}
+                \begin{itemize}
+                    \item Incremental search \alert{:set incsearch}
+                    \item Highlight search \alert{:set hlsearch}
+                    \item Show Match \alert{:set showmatch}
+                \end{itemize}
+            \end{alertblock}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Com copio text?}
+    \begin{frame}{Com copio text?}
+        \begin{itemize}
+            \item Copy/\emph{Yank} line \alert{yy}
+            \item Paste \alert{p}
+            \item Seleccio de text \alert{v} \alert{ctrl-v}
+        \end{itemize}
+            \begin{alertblock}{Composició de comandes}
+                Recorda que pots compossar comandes \alert{10yy y2w}
+            \end{alertblock}
+    \end{frame}
+
+\section{Advanced}
+    \subsection{Gestió de finestres}
+    \begin{frame}{Gestió de finestres}
+        \begin{itemize}
+            \item Split windows (horitzontal / vertical) \alert{:sp :vsp}
+            \item Change windows \alert{Ctrl-w h j k l}
+            \item Change window size
+                \begin{itemize}
+                    \item Increase/decrease \alert{Ctrl-w + --}
+                    \item Maximize \alert{Ctrl-w \_ }
+                    \item Equal size windows \alert{Ctrl-w = }
+                \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Gestió de buffers}
+    \begin{frame}{Gestió de buffers}
+        \begin{itemize}
+            \item Llistar buffers \alert{:ls}
+            \item Canviar buffer \alert{:[N]b}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Ajudes a la programació}
+    \begin{frame}{Ajudes a la programació}
+        \begin{itemize}
+            \item Vola pel codi: \alert{Ctags}
+                \begin{block}{Ctags}
+                    Ctags és una eina per indexar funcions, variables, ... d'un
+                    codi en C
+                \end{block}
+                \begin{itemize}
+                    \item Saltar al tag \alert{Ctrl-]}
+                    \item Tornar Enrera \alert{Ctrl-t}
+                    \item Navegar dins llista tags \alert{Ctrl-O (jump back) Ctrl-I (jump Forward)}
+                \end{itemize}
+            \item make \alert{:make :cn :cp :cl}
+            \item Consulta el man de la comanda actual \alert{K}
+        \end{itemize}
+    \end{frame}
+
+    \subsection{No et repeteixis}
+    \begin{frame}{No et repeteixis}
+        \begin{itemize}
+            \item Macros
+                \begin{itemize}
+                    \item Començar gravació macro \alert{q 'registre'}
+                    \item Finalitzar gravació macro \alert{Esc}
+                    \item Executar macro \alert{@ 'registre'}
+                    \item Executar última macro \alert{@ @}
+                \end{itemize}
+            \item Autocomplete \alert{Ctrl-N  Ctrl-P}
+            \item Repeat last command \alert{.}
+        \end{itemize}
+    \end{frame}
+
+    %- vimdiff
+
+    %- indent > <
+
+    %- gq
+\section{Conclusió}
+    \begin{frame}{Conclusió}
+        \begin{itemize}
+            \item Com ser eficient amb l'editor de text?
+                \onslide<1->
+                \begin{itemize}
+                    \item <2-> Cal ser ràpid
+                    \item <3-> Cal repetir les comandes bàsiques fins que siguin un reflex
+                    \item <4-> Cal detectar coses repetitives i intentar reduir el temps
+                    \item <5-> Iterar i gaudir
+                \end{itemize}
+            \item <6->Cal utilitzar 'vi' ?
+            \item <7->No cal, però sí minimitzar la fricció amb el teu editor
+                \onslide<8->
+                \begin{itemize}
+                    \item Vi està present a qualsevol entorn unix/linux.
+                    \item Vi és ràpid.
+                    \item Vi ocupa pocs recursos.
+                \end{itemize}
+                \onslide<9->
+                \begin{block}{Això és tot?}
+                    No hem ni començat... però amb això podeu ser més eficients.
+                \end{block}
+        \end{itemize}
+    \end{frame}
+
+\section{Com puc saber-ne més?}
+    \begin{frame}{Com puc saber-ne més?}
+        \begin{itemize}
+            \item VIMTUTOR (per començar)
+            \item Seven habits of effective text editing. Bram~Moolenaar. November~2000. \url{https://www.moolenaar.net/habits.html}
+            \item Ajuda del propi VIM \alert{:help} (per buscar funcionalitats noves)
+            \item VIM Homepage. \url{https://www.vim.org/}
+            \item Quick reference guide. \url{https://vimhelp.org/quickref.txt.html}
+        \end{itemize}
+
+    \end{frame}
+
+\begin{frame}{Moltes gràcies}
+    Happy hacking! :)
+\end{frame}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+\end{document}
